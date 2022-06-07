@@ -1,0 +1,19 @@
+name: RUN TEST
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:    
+      - develop
+
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - name: Installing project dependencies
+        run:  yarn install
+      - name: Building the project
+        run:  yarn test:unit
