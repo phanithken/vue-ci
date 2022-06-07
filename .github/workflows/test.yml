@@ -1,8 +1,10 @@
-name: DEPLOY TO STAGING
+name: RUN TEST
 
 on:
-  push:
-    branches:
+  pull_request:
+    types:
+      - opened
+    branches:    
       - develop
 
 jobs:
@@ -14,9 +16,4 @@ jobs:
       - name: Installing project dependencies
         run:  yarn install
       - name: Building the project
-        run:  yarn build
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEPLOY }}
+        run:  yarn test:unit
