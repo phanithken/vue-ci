@@ -27,3 +27,9 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Obtain firebase token
+```
+firebase login:ci
+```
+*Github's Repo > Settings > Secrets* name FirebaseDeploy
